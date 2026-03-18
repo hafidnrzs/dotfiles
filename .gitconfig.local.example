@@ -1,0 +1,13 @@
+# Machine-specific git config — copy this to ~/.gitconfig.local and customize.
+# This file is NOT tracked by git.
+
+[user]
+    name = Your Name
+    email = your@email.com
+
+[credential]
+    # WSL: use GCM from Git for Windows
+    # helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+    #
+    # Linux server: store credentials in ~/.git-credentials (plaintext)
+    # helper = store

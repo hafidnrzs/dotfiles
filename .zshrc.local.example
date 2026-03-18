@@ -1,0 +1,25 @@
+# Machine-specific config — copy this to ~/.zshrc.local and customize.
+# This file is NOT tracked by git.
+
+# --- Node (NVM) ---
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# --- Go ---
+# export PATH=$PATH:/usr/local/go/bin
+# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# --- VS Code (WSL only) ---
+# alias code='/mnt/c/Users/<username>/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+
+# --- Claude Code ---
+# export CLAUDE_CODE_DISABLE_AUTOUPDATE=1
+
+# --- Local bin ---
+# export PATH=$HOME/bin:$PATH
+# [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# --- Oracle CLI ---
+# OCI_AC="$HOME/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh"
+# [[ -e "$OCI_AC" ]] && source "$OCI_AC"
