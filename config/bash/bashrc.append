@@ -1,0 +1,23 @@
+# >>> dotfiles managed block >>>
+# Anything inside this marker block is managed by ~/dotfiles/scripts/99-symlinks.sh.
+# Do not edit by hand; changes will be overwritten.
+
+# Local bin
+export PATH="$HOME/.local/bin:$PATH"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Go
+if [ -d "/usr/local/go/bin" ]; then
+    export PATH="$PATH:/usr/local/go/bin"
+fi
+
+# Machine-specific secrets / env (not tracked by git)
+[ -f "$HOME/.config/shell.local" ] && . "$HOME/.config/shell.local"
+
+# Kiro shell integration (only inside Kiro terminal)
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
+# <<< dotfiles managed block <<<

@@ -1,0 +1,11 @@
+# Local machine-specific files
+config/shell.local
+**/*.local
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/

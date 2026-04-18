@@ -1,0 +1,18 @@
+# Machine-specific secrets and env vars.
+# Copy this file to ~/.config/shell.local and fill in real values.
+# This file is NOT tracked by git. Sourced by both fish and bash.
+#
+# Use plain POSIX `export KEY=value` lines (no fish-only syntax here).
+
+# --- Hugging Face ---
+# export HF_TOKEN="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# --- OpenAI / Anthropic / other API keys ---
+# export OPENAI_API_KEY=""
+# export ANTHROPIC_API_KEY=""
+
+# --- WakaTime ---
+# managed via ~/.wakatime.cfg, no env var needed
+
+# --- Custom PATH additions ---
+# export PATH="$HOME/some/custom/bin:$PATH"
