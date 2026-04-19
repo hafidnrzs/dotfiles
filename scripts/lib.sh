@@ -22,9 +22,14 @@ err()   { printf "%s[err]%s %s\n" "$C_RED" "$C_RESET" "$*" >&2; }
 
 # ask "Question" <default yn>
 # Returns 0 for yes, 1 for no. Default used when input is empty.
+# When YES_ALL=1 (set by --yes flag), skips the prompt and returns the default.
 ask() {
     local prompt="$1"; local default="${2:-n}"
     local hint="[y/N]"; [ "$default" = "y" ] && hint="[Y/n]"
+    if [ "${YES_ALL:-0}" = "1" ]; then
+        printf "%s %s %s\n" "$prompt" "$hint" "(auto: ${default})"
+        [ "$default" = "y" ] && return 0 || return 1
+    fi
     local reply
     read -rp "$prompt $hint " reply
     reply="${reply:-$default}"

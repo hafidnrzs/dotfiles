@@ -6,6 +6,7 @@
 #   ./install.sh              # full desktop profile
 #   ./install.sh --server     # minimal CLI-only profile for headless servers
 #   ./install.sh --wsl        # force WSL-aware mode (normally auto-detected)
+#   ./install.sh --yes        # accept all prompts (combine with any flag above)
 #   ./install.sh --help
 set -euo pipefail
 
@@ -20,9 +21,10 @@ source "$DOTFILES_DIR/scripts/lib.sh"
 # --------------------------------------------------------------------
 PROFILE="desktop"
 FORCE_WSL=0
+YES_ALL=0
 
 usage() {
-    sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'
+    sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//'
     exit 0
 }
 
@@ -31,12 +33,13 @@ for arg in "$@"; do
         --server) PROFILE="server" ;;
         --desktop) PROFILE="desktop" ;;
         --wsl) FORCE_WSL=1 ;;
+        --yes|-y) YES_ALL=1 ;;
         -h|--help) usage ;;
         *) err "Unknown flag: $arg"; usage ;;
     esac
 done
 
-export PROFILE
+export PROFILE YES_ALL
 
 # --------------------------------------------------------------------
 # OS detection
@@ -100,7 +103,7 @@ EOF
 }
 
 banner
-echo "  Profile : $PROFILE$([ "$IS_WSL" = "1" ] && echo " (WSL detected)")"
+echo "  Profile : $PROFILE$([ "$IS_WSL" = "1" ] && echo " (WSL detected)")$([ "$YES_ALL" = "1" ] && echo " [--yes: unattended]")"
 echo "  Target  : $DOTFILES_DIR"
 echo
 
