@@ -57,6 +57,12 @@ if [ "$PROFILE" = "desktop" ]; then
     link_file "$DOTFILES_DIR/config/vscode/mcp.json"      "$HOME/.config/Code/User/mcp.json"
 fi
 
+# -------- Nano (always) --------
+link_file "$DOTFILES_DIR/config/nano/nanorc" "$HOME/.nanorc"
+
+# -------- Vim (always) --------
+link_file "$DOTFILES_DIR/config/vim/vimrc" "$HOME/.vimrc"
+
 # -------- shell.local (secrets template) --------
 if [ ! -f "$HOME/.config/shell.local" ]; then
     mkdir -p "$HOME/.config"
