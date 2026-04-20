@@ -5,8 +5,9 @@ source "$(dirname "$0")/lib.sh"
 # --- Free Download Manager --------------------------------------------------
 echo
 info "Free Download Manager is recommended before downloading other software."
-if ask "Install Free Download Manager from Flathub now?" y; then
-    flatpak install flathub org.freedownloadmanager.Manager
+info "(Flatpak version has issues on Linux Mint — opening the official download page instead.)"
+if ask "Open Free Download Manager download page in browser?" y; then
+    xdg-open "https://www.freedownloadmanager.org/download-fdm-for-linux.htm"
 fi
 
 # --- Claude Code ------------------------------------------------------------
