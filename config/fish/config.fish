@@ -2,13 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# NVM setup for Fish (uses bash bridge if nvm.sh exists)
-if test -s ~/.nvm/nvm.sh
-    function nvm
-        bash -c 'source ~/.nvm/nvm.sh && nvm '"$argv"
-    end
-end
-
 # Load machine-specific secrets and env (not tracked by git)
 if test -f ~/.config/shell.local
     # shell.local is POSIX sh; source via `bass` if loaded, else parse exports manually
