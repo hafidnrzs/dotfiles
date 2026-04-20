@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
-# Print a list of recommended third-party software with official download URLs.
-# Nothing is installed here. The user chooses what they want from the list.
+# Prompt for Free Download Manager + Claude Code, then print recommended software list.
 source "$(dirname "$0")/lib.sh"
+
+# --- Free Download Manager --------------------------------------------------
+echo
+info "Free Download Manager is recommended before downloading other software."
+if ask "Install Free Download Manager from Flathub now?" y; then
+    flatpak install flathub org.freedownloadmanager.Manager
+fi
+
+# --- Claude Code ------------------------------------------------------------
+echo
+if ask "Install Claude Code (Anthropic's official CLI)?" y; then
+    info "Installing Claude Code..."
+    curl -fsSL https://claude.ai/install.sh | bash
+fi
 
 cat <<'EOF'
 
@@ -38,10 +51,10 @@ Pick what you want; every link below is the official source.
 
 --- Media & utilities ------------------------------------------------
   OBS Studio          https://obsproject.com/download
-  fastfetch           https://github.com/fastfetch-cli/fastfetch/wiki/Installation
-  Free Download Mgr   https://www.freedownloadmanager.org/
+  fastfetch           https://github.com/fastfetch-cli/fastfetch
 
 --- Flatpak apps (requires `flatpak` + flathub remote) ---------------
+  OnlyOffice          flatpak install flathub org.onlyoffice.desktopeditors
   Discord             flatpak install flathub com.discordapp.Discord
   Telegram            flatpak install flathub org.telegram.desktop
   Flatseal            flatpak install flathub com.github.tchx84.Flatseal

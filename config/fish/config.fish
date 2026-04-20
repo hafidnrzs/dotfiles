@@ -23,6 +23,3 @@ if test -f ~/.config/shell.local
         end
     end
 end
-
-# Kiro shell integration (if running inside Kiro)
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
