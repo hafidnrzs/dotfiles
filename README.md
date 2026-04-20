@@ -58,6 +58,49 @@ Same shell configs, without GUI libs or personal tooling:
 Both are created from `.example` templates on first run. The git credential
 helper defaults to `cache --timeout=3600` (in-memory, no plaintext on disk).
 
+## Device-specific software and PATH additions
+
+For per-device tools and applications that should not be committed to the repo:
+
+### Adding local binaries
+
+1. **Extract/install to `~/.local/bin`** (already in the PATH):
+
+   ```bash
+   tar -xf ~/Downloads/app-*.tar.xz -C ~/.local/bin/
+   ```
+
+2. **For archives with internal folder structure**, create a symlink for easy access:
+
+   ```bash
+   # If binary is in a subfolder
+   ln -s app-x86_64-unknown-linux-musl/app ~/.local/bin/app
+   ```
+
+3. **Verify it works** (shell must be reloaded or restarted):
+   ```bash
+   app --version
+   ```
+
+### Adding custom paths
+
+Edit `~/.config/shell.local` (use POSIX syntax for bash + fish compatibility):
+
+```bash
+# Always append to existing PATH, never replace it
+export PATH="$HOME/my/custom/bin:$PATH"
+export PATH="/opt/specific/path:$PATH"
+```
+
+Both bash and fish automatically source this file on startup.
+
+**Why `~/.local/bin` + `shell.local`?**
+
+- `~/.local/bin` is standard across Linux (XDG Base Directory)
+- `shell.local` is ignored by git (see `.gitignore`)
+- Each device keeps its own tools without affecting the repo
+- PATH is already configured in dotfiles to load both sources
+
 ## Repo layout
 
 ```
