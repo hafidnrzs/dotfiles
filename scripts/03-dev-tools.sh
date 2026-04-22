@@ -46,11 +46,10 @@ else
 fi
 
 # --- rtk (Rust Token Killer) ---
-# Hardware/user-specific; install only if already on PATH elsewhere OR user confirms.
 if ! have rtk; then
-    if ask "Install rtk (Rust Token Killer)? You'll need to fetch the binary manually from its release page." n; then
-        warn "Download rtk from its official releases page and place the binary at ~/.local/bin/rtk"
-        warn "Repo: see your notes / https://github.com/ (project-specific)"
+    if ask "Install rtk (Rust Token Killer)?" n; then
+        info "Installing rtk to ~/.local/bin..."
+        curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
     fi
 else
     ok "rtk already installed."
