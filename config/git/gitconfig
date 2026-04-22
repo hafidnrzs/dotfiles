@@ -4,9 +4,9 @@
     autocrlf = input
     editor = code --wait
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process -- %f
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [include]
     path = ~/.gitconfig.local
