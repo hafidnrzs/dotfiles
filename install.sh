@@ -148,7 +148,7 @@ fi
 # Desktop profile (default)
 run_step "1. Install baseline CLI packages (git, curl, fish, build tools, ...)" 01-apt-packages.sh y
 run_step "2. Install fish shell + fisher + plugins, set as default"             02-shell-fish.sh   y
-run_step "3. Install dev runtimes (NVM + Node LTS, Go, uv, rtk?)"               03-dev-tools.sh    y
+run_step "3. Install dev runtimes (NVM + Node LTS, Go, uv, PHP, rtk?)"               03-dev-tools.sh    y
 run_step "4. Apply symlinks & bashrc managed block"                             99-symlinks.sh     y
 run_step "5. Print recommended software list (official links, not auto-installed)" 05-recommendations.sh y
 

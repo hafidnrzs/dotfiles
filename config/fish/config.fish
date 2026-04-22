@@ -16,21 +16,3 @@ if test -f ~/.config/shell.local
         end
     end
 end
-
-# Go
-if test -d /usr/local/go/bin
-    set -gx PATH /usr/local/go/bin $PATH
-end
-
-# Local bin
-if test -d ~/.local/bin
-    set -gx PATH ~/.local/bin $PATH
-end
-
-# NVM
-set -gx NVM_DIR ~/.nvm
-if type -q bass
-    bass source $NVM_DIR/nvm.sh
-end
-
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)

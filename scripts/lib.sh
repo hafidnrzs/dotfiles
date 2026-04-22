@@ -59,3 +59,23 @@ if [ -z "${DOTFILES_DIR:-}" ]; then
     DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
     export DOTFILES_DIR
 fi
+
+SHELL_LOCAL="$HOME/.config/shell.local"
+append_local() {
+    local marker="# --- $1 ---"
+    local content="$2"
+    # Ensure directory exists before checking/appending
+    mkdir -p "$(dirname "$SHELL_LOCAL")"
+    if [ ! -f "$SHELL_LOCAL" ]; then
+        touch "$SHELL_LOCAL"
+        chmod 600 "$SHELL_LOCAL"
+    fi
+    if ! grep -qF "$marker" "$SHELL_LOCAL"; then
+        info "Appending $1 config to $SHELL_LOCAL..."
+        {
+            echo ""
+            echo "$marker"
+            echo "$content"
+        } >> "$SHELL_LOCAL"
+    fi
+}
