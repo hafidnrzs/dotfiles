@@ -16,3 +16,12 @@ if test -f ~/.config/shell.local
         end
     end
 end
+
+# List the directories and sort them by the filename timestamp
+function lsort
+    set -l count 5
+    if test (count $argv) -gt 1
+        set count $argv[2]
+    end
+    ls -l $argv[1] | tail -n +2 | sort -k9 -r | head -n $count
+end
