@@ -59,5 +59,6 @@
             "icon": "terminal-powershell"
         }
     },
-    "terminal.integrated.defaultProfile.linux": "fish"
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "claudeCode.useTerminal": true
 }
