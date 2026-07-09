@@ -27,22 +27,32 @@ if have nvm; then
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 fi
 
-# --- Go ---
-if ! have go; then
-    GO_VERSION="${GO_VERSION:-1.23.4}"
-    info "Installing Go $GO_VERSION to /usr/local/go..."
-    TMP="$(mktemp --suffix=.tar.gz)"
-    curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o "$TMP"
-    sudo rm -rf /usr/local/go
-    sudo tar -C /usr/local -xzf "$TMP"
-    rm -f "$TMP"
+# --- Go (via gvm) ---
+if [ ! -s "$HOME/.gvm/scripts/gvm" ]; then
+    info "Installing gvm (Go Version Manager)..."
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 else
-    ok "Go already installed: $(go version)"
+    ok "gvm already installed."
 fi
 
-if [ -d /usr/local/go/bin ]; then
-    append_local "Go" 'export PATH="/usr/local/go/bin:$PATH"'
+# gvm's scripts assume unset variables are OK; relax -u while sourcing.
+set +u
+# shellcheck disable=SC1091
+[ -s "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
+set -u
+
+GO_VERSION="${GO_VERSION:-go1.26.4}"
+if have gvm && ! gvm list | grep -qF "$GO_VERSION"; then
+    info "Installing $GO_VERSION via gvm..."
+    set +u
+    gvm install "$GO_VERSION" -B
+    gvm use "$GO_VERSION" --default
+    set -u
+else
+    ok "$GO_VERSION already installed via gvm."
 fi
+
+append_local "GVM (Go Version Manager)" '[ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"'
 
 # --- Path for local binaries ---
 append_local "Local bin" 'export PATH="$HOME/.local/bin:$PATH"'

@@ -60,5 +60,8 @@
         }
     },
     "terminal.integrated.defaultProfile.linux": "fish",
-    "claudeCode.useTerminal": true
+    "claudeCode.useTerminal": true,
+    "python.terminal.useEnvFile": true,
+    "explorer.confirmDragAndDrop": false,
+    "go.toolsManagement.autoUpdate": true
 }

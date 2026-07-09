@@ -31,9 +31,9 @@ don't want. Re-running is idempotent.
 - **Baseline CLI** (`apt`): git + git-lfs, curl, wget, openssh-client, rsync,
   ufw, fish, bash-completion, zip/unzip/p7zip, build-essential, make, vim,
   htop, jq, tree, ffmpeg, imagemagick, flameshot _(skipped on WSL)_.
-- **Fish shell** as default, with `fisher` + `nvm.fish` + `bass` plugins.
-  bash stays installed as fallback; both share `~/.config/shell.local`.
-- **Dev runtimes**: NVM + Node LTS, Go (to `/usr/local/go`), uv (Astral).
+- **Fish shell** as default, with `fisher` + `nvm.fish` + `bass` + `fish-gvm`
+  plugins. bash stays installed as fallback; both share `~/.config/shell.local`.
+- **Dev runtimes**: NVM + Node LTS, Go (via gvm), uv (Astral).
 - **Symlinks**: `~/.gitconfig`, `~/.config/fish/`, `~/.config/Code/User/`,
   plus a marker-delimited managed block appended to `~/.bashrc`.
 - **Recommendation list** (printed, not auto-installed) with official

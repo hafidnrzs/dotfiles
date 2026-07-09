@@ -10,10 +10,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Go
-if [ -d "/usr/local/go/bin" ]; then
-    export PATH="$PATH:/usr/local/go/bin"
-fi
+# GVM (Go Version Manager)
+[ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
 
 # Machine-specific secrets / env (not tracked by git)
 [ -f "$HOME/.config/shell.local" ] && . "$HOME/.config/shell.local"
