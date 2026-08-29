@@ -25,3 +25,10 @@ function lsort
     end
     ls -l $argv[1] | tail -n +2 | sort -k9 -r | head -n $count
 end
+
+# pnpm
+set -gx PNPM_HOME "/home/hafidnrzs/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

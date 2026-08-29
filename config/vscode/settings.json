@@ -63,5 +63,7 @@
     "claudeCode.useTerminal": true,
     "python.terminal.useEnvFile": true,
     "explorer.confirmDragAndDrop": false,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "terminal.integrated.mouseWheelScrollSensitivity": 3,
+    "terminal.integrated.gpuAcceleration": "off"
 }

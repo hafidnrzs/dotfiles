@@ -22,9 +22,13 @@ if have nvm; then
     else
         ok "Node LTS already installed."
     fi
-    
-    append_local "NVM" 'export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+
+    # NVM sourcing for bash lives in config/bash/bashrc.append (managed
+    # ~/.bashrc block), not in shell.local. shell.local is shared with fish
+    # via bass, and fish manages Node itself via the nvm.fish fisher plugin
+    # (see config/fish). Sourcing classic nvm.sh there too puts its
+    # bin dir on PATH ahead of nvm.fish's, silently overriding the
+    # nvm_default_version the user configured for fish.
 fi
 
 # --- Go (via gvm) ---
