@@ -2,7 +2,6 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.formatOnSave": true,
     "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "GitHub Dark Default",
     "workbench.iconTheme": "material-icon-theme",
     "git.confirmSync": false,
     "tailwind-fold.autoFold": false,
@@ -65,5 +64,11 @@
     "explorer.confirmDragAndDrop": false,
     "go.toolsManagement.autoUpdate": true,
     "terminal.integrated.mouseWheelScrollSensitivity": 3,
-    "terminal.integrated.gpuAcceleration": "off"
+    "terminal.integrated.gpuAcceleration": "off",
+    "claudeCode.hideOnboarding": true,
+    "window.density.layout": "compact",
+    "git.blame.editorDecoration.enabled": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
