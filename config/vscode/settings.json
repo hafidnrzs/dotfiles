@@ -70,5 +70,17 @@
     "git.blame.editorDecoration.enabled": true,
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "intellij.region": "apac",
+    "intellij.dataSharing": "anonymous",
+    "intellij.additionalJvmArgs": [
+        "-Xmx1g"
+    ],
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable",
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98",
+            "allowed": true
+        }
+    ]
 }
